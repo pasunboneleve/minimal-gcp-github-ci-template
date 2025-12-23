@@ -33,7 +33,7 @@ direnv reload
 3. **Initialize OpenTofu**:
 ```bash
 cd infra
-tofu init -backend-config="bucket=your-tf-state-bucket" -backend-config="prefix=your-project/infra"
+tofu init -backend-config="bucket=$GCS_BUCKET" -backend-config="prefix=$GCP_PROJECT_ID/infra"
 ```
 
 4. **Apply infrastructure**:

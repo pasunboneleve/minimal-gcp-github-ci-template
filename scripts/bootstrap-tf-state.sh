@@ -25,4 +25,4 @@ gsutil versioning set on gs://${GCS_BUCKET}
 echo "Setting retention policy: ${RETENTION_DAYS} days"
 gsutil retention set ${RETENTION_DAYS}d gs://${GCS_BUCKET}
 
-echo "Done. Use this backend config: bucket=${GCS_BUCKET}, prefix=infra"
+echo "Done. Use this backend config: bucket=${GCS_BUCKET}, prefix=${GCP_PROJECT_ID}/infra"
