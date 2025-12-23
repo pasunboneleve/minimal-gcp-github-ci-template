@@ -1,17 +1,33 @@
 ## Deployment Procedures
 
-### Initial Infrastructure Setup
+### Install dependencies
 
-1. **Configure your environment**:
+- [direnv](https://direnv.net/)
+- [open tofu](https://opentofu.org/)
+
+### Set environment variables
+
 ```bash
-# Copy template and fill in your values
+cp .env.template .env
 cp infra/prod.tfvars.template infra/prod.tfvars
-# Edit infra/prod.tfvars with your project details
 ```
+and fill the details in the these new files. Then run
+
+```bash
+direnv allow
+```
+
+if you need to reload the environment variables, use
+
+```bash
+direnv reload
+```
+
+### Initial Infrastructure Setup
 
 2. **Bootstrap GCS backend** (one-time):
 ```bash
-GCP_PROJECT_ID=your-project-id BUCKET=your-tf-state-bucket ./scripts/bootstrap-tf-state.sh
+./scripts/bootstrap-tf-state.sh
 ```
 
 3. **Initialize OpenTofu**:
