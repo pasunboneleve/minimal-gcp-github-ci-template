@@ -126,24 +126,6 @@ resource "google_project_iam_member" "sa_roles" {
   member   = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
-# Organization-level roles for administrative service account
-resource "google_organization_iam_member" "admin_org_policy" {
-  org_id = var.organization_id
-  role   = "roles/orgpolicy.policyAdmin"
-  member = "serviceAccount:${google_service_account.admin.email}"
-}
-
-resource "google_organization_iam_member" "admin_security" {
-  org_id = var.organization_id
-  role   = "roles/securitycenter.adminViewer"
-  member = "serviceAccount:${google_service_account.admin.email}"
-}
-
-resource "google_organization_iam_member" "admin_service_usage" {
-  org_id = var.organization_id
-  role   = "roles/serviceusage.serviceUsageAdmin"
-  member = "serviceAccount:${google_service_account.admin.email}"
-}
 
 # Allow owner to impersonate the admin service account
 resource "google_service_account_iam_binding" "admin_impersonation" {

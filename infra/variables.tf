@@ -43,11 +43,6 @@ variable "github_repo" {
   type        = string
 }
 
-variable "organization_id" {
-  description = "Google Cloud Organization ID (for org-level policies)"
-  type        = string
-}
-
 variable "cloud_run_url" {
   description = "Cloud Run service URL for CNAME record. Find this in Google Cloud Console: Cloud Run > [service-name] > copy the URL from the service details page (e.g., service-name-hash.region.run.app)"
   type        = string

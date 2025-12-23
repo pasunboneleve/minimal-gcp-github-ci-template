@@ -30,7 +30,6 @@ Set values matching your environment:
 terraform apply \
   -var="project_id=<GCP_PROJECT_ID>" \
   -var="project_number=<PROJECT_NUMBER>" \
-  -var="organization_id=<ORGANIZATION_ID>" \
   -var="pool_id=github-pool" \
   -var="provider_id=github-provider" \
   -var="github_owner=<GITHUB_OWNER>" \
