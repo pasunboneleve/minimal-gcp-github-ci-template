@@ -17,6 +17,7 @@ locals {
     "dns.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
+    "bigquery.googleapis.com",
   ]
 
   # Full resource names
@@ -42,7 +43,7 @@ resource "google_iam_workload_identity_pool" "github" {
   workload_identity_pool_id = var.pool_id
   display_name              = var.pool_id
 
-  depends_on = [google_project_service.apis]
+  depends_on = [google_project_service.apis, google_project_service.bigquery]
 }
 
 resource "google_iam_workload_identity_pool_provider" "github" {
@@ -76,6 +77,15 @@ resource "google_service_account" "github_actions" {
   description  = "Service account for GitHub Actions deployments"
 
   depends_on = [google_project_service.apis]
+}
+
+# Ensure BigQuery API is enabled
+resource "google_project_service" "bigquery" {
+  project = var.project_id
+  service = "bigquery.googleapis.com"
+
+  disable_dependent_services = false
+  disable_on_destroy         = false
 }
 
 # Create administrative service account for organization-level tasks
