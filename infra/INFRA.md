@@ -11,7 +11,7 @@ This folder provisions:
 
 ## 1) Create a remote state bucket (one-time)
 ```bash
-export PROJECT_ID=<your-project-id>
+export GCP_PROJECT_ID=<your-project-id>
 export GCS_BUCKET=<globally-unique-bucket-name>
 ./scripts/bootstrap-tf-state.sh
 ```
@@ -28,7 +28,7 @@ terraform init \
 Set values matching your environment:
 ```bash
 terraform apply \
-  -var="project_id=<PROJECT_ID>" \
+  -var="project_id=<GCP_PROJECT_ID>" \
   -var="project_number=<PROJECT_NUMBER>" \
   -var="organization_id=<ORGANIZATION_ID>" \
   -var="pool_id=github-pool" \

@@ -11,7 +11,7 @@ cp infra/prod.tfvars.template infra/prod.tfvars
 
 2. **Bootstrap GCS backend** (one-time):
 ```bash
-PROJECT_ID=your-project-id BUCKET=your-tf-state-bucket ./scripts/bootstrap-tf-state.sh
+GCP_PROJECT_ID=your-project-id BUCKET=your-tf-state-bucket ./scripts/bootstrap-tf-state.sh
 ```
 
 3. **Initialize OpenTofu**:
@@ -33,11 +33,11 @@ Use the dedicated admin service account for organization-level tasks:
 # Organization policy management
 gcloud resource-manager org-policies set-policy policy.yaml \
   --organization={ORGANIZATION_ID} \
-  --impersonate-service-account=infrastructure-admin@{PROJECT_ID}.iam.gserviceaccount.com
+  --impersonate-service-account=infrastructure-admin@{GCP_PROJECT_ID}.iam.gserviceaccount.com
 
 # DNS management
 gcloud dns record-sets transaction start \
   --zone=boneleve-blog \
-  --project={PROJECT_ID} \
-  --impersonate-service-account=infrastructure-admin@{PROJECT_ID}.iam.gserviceaccount.com
+  --project={GCP_PROJECT_ID} \
+  --impersonate-service-account=infrastructure-admin@{GCP_PROJECT_ID}.iam.gserviceaccount.com
 ```
