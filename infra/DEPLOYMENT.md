@@ -50,10 +50,4 @@ Use the dedicated admin service account for organization-level tasks:
 gcloud resource-manager org-policies set-policy policy.yaml \
   --organization={ORGANIZATION_ID} \
   --impersonate-service-account=infrastructure-admin@{GCP_PROJECT_ID}.iam.gserviceaccount.com
-
-# DNS management
-gcloud dns record-sets transaction start \
-  --zone=boneleve-blog \
-  --project={GCP_PROJECT_ID} \
-  --impersonate-service-account=infrastructure-admin@{GCP_PROJECT_ID}.iam.gserviceaccount.com
 ```
