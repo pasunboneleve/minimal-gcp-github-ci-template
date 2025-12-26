@@ -10,14 +10,14 @@ and build on top of it.
 FAQ
 ---
 
-## * How can I deploy to multiple environments (`DEV`, `STG`, `PROD`)?
+### How can I deploy to multiple environments (`DEV`, `STG`, `PROD`)?
 
 Just create `dev.tfvars`, `stg.tfvars` and `prod.tfvars`. Or come up
 with a more complex setup. But in my humble opinion, if it passes the
 tests, it belongs to `prod`. Make sure your test smartly and use the
 types, Luke!
 
-## * The GitHub action is failing in this repo, does that mean it doesn't work?
+### The GitHub action is failing in this repo, does that mean it doesn't work?
 
 No. It means I did not
 
