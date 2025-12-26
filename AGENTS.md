@@ -9,8 +9,7 @@ Set required environment variables first:
 ```bash
 export PROJECT_ID={{GCP_PROJECT_ID}}
 export GCP_REGION={{GCP_REGION}}
-export SERVICE_NAME=meat-dist-data-platform
-export REPO=meat-dist-data-platform
+export REPO=<github-repo>
 ```
 
 ### Infrastructure Management
@@ -22,7 +21,7 @@ PROJECT_ID={{GCP_PROJECT_ID}} GCS_BUCKET={{YOUR_TF_STATE_BUCKET}} ./scripts/boot
 Apply infrastructure:
 ```bash
 cd infra
-terraform init -backend-config="bucket={{YOUR_TF_STATE_BUCKET}}" -backend-config="prefix=infra"
+terraform init -backend-config="bucket={{YOUR_TF_STATE_BUCKET}}" -backend-config="prefix={{GCP_PROJECT_ID}}/infra"
 terraform apply \
   -var="project_id={{GCP_PROJECT_ID}}" \
   -var="project_number={{GCP_PROJECT_NUMBER}}" \
